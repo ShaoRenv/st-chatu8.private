@@ -1,0 +1,61 @@
+{
+  "version": "1.0.0",
+  "builtAt": "2026-09-27T16:42:05.175Z",
+  "files": [
+    {
+      "path": "st-chatu8-compress.js",
+      "bytes": 14169,
+      "sha256": "0dc82cea7f255d2751adeac48f98769ce7c77da8624422b45b3228abafc2d115"
+    },
+    {
+      "path": "worker.js",
+      "bytes": 205086,
+      "sha256": "2ec2b6f4b59fdc1f01281a32260a0e2c04d54eedc1889b69fa740abd01773339"
+    },
+    {
+      "path": "wasm/mozjpeg_enc.wasm",
+      "bytes": 251524,
+      "sha256": "24d4177f1c4963e2058b107189249651c61fdef125570e79b1dfb63c8bb49326"
+    },
+    {
+      "path": "wasm/webp_enc.wasm",
+      "bytes": 281261,
+      "sha256": "b6085bb6702f144e9dc6016d58d230b34a84976bf0d080b7390b4b4b137d6ab7"
+    },
+    {
+      "path": "wasm/webp_enc_simd.wasm",
+      "bytes": 345584,
+      "sha256": "39c279269ec1163b987b6d69749458e3d5b03b9585f58b6ca5455b76b504a305"
+    },
+    {
+      "path": "wasm/squoosh_oxipng_bg.wasm",
+      "bytes": 164172,
+      "sha256": "5ea3e53c0b4fc1b4e8d1511d35b89329d9376bec75a9c4d3c054774487e5f9a3"
+    },
+    {
+      "path": "licenses/oxipng-MIT.txt",
+      "bytes": 1078,
+      "sha256": "fbd251bd50b001db93e2cb942e71a85a3befe6ddef659709e09d762d4e2c2a5a"
+    },
+    {
+      "path": "licenses/libwebp-BSD-3-Clause.txt",
+      "bytes": 1495,
+      "sha256": "e293d1dddc9785200b1f58a4f5293543cf8566d9e0b8a3c02fad955035b19f42"
+    },
+    {
+      "path": "licenses/mozjpeg-libjpeg-turbo.txt",
+      "bytes": 5208,
+      "sha256": "8213556ea36ce3a0f2883db06238463e2452fdad68e3d2e2e4ace2189477a37e"
+    },
+    {
+      "path": "licenses/jsquash-Apache-2.0.txt",
+      "bytes": 11343,
+      "sha256": "8c3690b09c168f196446cf5904332023bbc15eb92b6a7cee470ac829e6a65d20"
+    },
+    {
+      "path": "licenses/wasm-feature-detect-Apache-2.0.txt",
+      "bytes": 11341,
+      "sha256": "bcf29b4fd3ec2cb5f9d40a0866da446f6da62170d2ccedf4aeca9cf9406dd20c"
+    }
+  ]
+}

@@ -212,15 +212,20 @@
             </div>
             <div class="st-chatu8-field">
                 <label for="novelaimode">模型</label>
-                <select id="novelaimode" class="st-chatu8-select">
-                    <option>nai-diffusion-3</option>
-                    <option>nai-diffusion-4-full</option>
-                    <option>nai-diffusion-4-curated-preview</option>
-                    <option>nai-diffusion-4-5-curated</option>
-                    <option>nai-diffusion-4-5-full</option>
-                    <option>nai-diffusion-5-curated</option>
-                    <option>nai-diffusion-5-full</option>
-                </select>
+                <div style="display: flex; flex-direction: column; width: 100%; max-width: 420px; gap: 6px;">
+                    <select id="novelaimode" class="st-chatu8-select">
+                        <option>nai-diffusion-3</option>
+                        <option>nai-diffusion-4-full</option>
+                        <option>nai-diffusion-4-curated-preview</option>
+                        <option>nai-diffusion-4-5-curated</option>
+                        <option>nai-diffusion-4-5-full</option>
+                        <option>nai-diffusion-5-curated</option>
+                        <option>nai-diffusion-5-full</option>
+                    </select>
+                    <button type="button" class="st-chatu8-btn" id="st_chatu8_reset_model_default" title="将当前所选模型的全部生成参数重置为官网出厂默认值">
+                        <i class="fa-solid fa-rotate-left"></i> 重置当前模型为官网默认
+                    </button>
+                </div>
             </div>
             <div class="st-chatu8-field" id="novelai_straight_alpha_container" style="display: none;">
                 <label for="novelai_straight_alpha">透明图片开关 (straight_alpha)</label>
@@ -324,6 +329,38 @@
             </div>
         </div>
     </div>
+    <div class="st-chatu8-settings-section" id="ch-429-retry-section">
+        <h3>429 自动重发</h3>
+        <div class="st-chatu8-field">
+            <label for="ch-429-enabled">启用（命中 HTTP 429 时自动重发）</label>
+            <div class="st-chatu8-toggle">
+                <input id="ch-429-enabled" type="checkbox"/>
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="ch-429-delay">重发间隔（毫秒）</label>
+            <input type="number" id="ch-429-delay" class="st-chatu8-text-input" min="0" step="500" placeholder="4000">
+        </div>
+        <div class="st-chatu8-field">
+            <label for="ch-429-max">最多重发次数</label>
+            <input type="number" id="ch-429-max" class="st-chatu8-text-input" min="0" step="1" placeholder="5">
+        </div>
+        <div class="st-chatu8-field">
+            <label for="ch-429-backoff">重发间隔方式</label>
+            <select id="ch-429-backoff" class="st-chatu8-select">
+                <option value="exponential">指数退避（每次翻倍）</option>
+                <option value="fixed">固定间隔</option>
+            </select>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="ch-429-retryafter">尊重服务端 Retry-After</label>
+            <div class="st-chatu8-toggle">
+                <input id="ch-429-retryafter" type="checkbox"/>
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+    </div>
     <div class="st-chatu8-settings-section" id="nai-vibe-transfer-section">
         <h3>氛围参考图 (Vibe Transfer)</h3>
             <div class="st-chatu8-field">
@@ -395,7 +432,7 @@
                 </div>
             </div>
     </div>
-    <div class="st-chatu8-settings-section">
+    <div class="st-chatu8-settings-section" id="nai-vibe-group-section">
         <h3>氛围转移设置</h3>
             <div class="st-chatu8-field">
                 <label>Vibe 文件生成器</label>

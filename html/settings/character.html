@@ -139,6 +139,22 @@
                 <input type="text" id="char_nameEN" class="st-chatu8-text-input" />
             </div>
 
+            <!-- 存储形式：分部位提示词（默认）/ 固定提示词 -->
+            <div class="st-chatu8-field-col">
+                <label for="char_promptMode">存储形式</label>
+                <select id="char_promptMode" class="st-chatu8-select">
+                    <option value="split" selected>分部位提示词</option>
+                    <option value="fixed">固定提示词</option>
+                </select>
+                <span id="char_promptMode_hint" style="opacity: 0.85; font-size: 0.9em;">分部位模式按角度/部位分别填写；固定模式只用这一段，不分角度/部位，原样使用。</span>
+            </div>
+            <div class="st-chatu8-field-col">
+                <textarea id="char_fixedPrompt" class="st-chatu8-textarea" rows="4" style="display: none;" placeholder="固定提示词：一段通用外观描述，不分角度/部位，原样使用"></textarea>
+                <button type="button" id="char_mergeToFixed" class="st-chatu8-btn" style="display: none;">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> 用现有面部+特征生成
+                </button>
+            </div>
+
             <!-- 全身组合 Token 统计 -->
             <div class="st-chatu8-settings-section" style="background: var(--SmartThemeBlurTintColor); padding: 10px; border-radius: 8px; margin-top: 10px; margin-bottom: 10px;">
                 <label style="font-weight: bold; margin-bottom: 5px; display: block;">全身组合 Token 统计 (角色特征 + 五官 + 上半身 + 下半身)</label>
@@ -149,67 +165,67 @@
                     <div id="token_combo_back_nsfw">背面 NSFW 全身: 0</div>
                 </div>
             </div>
-            <div class="st-chatu8-field-col">
+            <div class="st-chatu8-field-col" data-char-part-field="1">
                 <label for="char_characterTraits">角色特征</label>
                 <textarea id="char_characterTraits" class="st-chatu8-textarea" rows="3"></textarea>
                 <div id="char_characterTraits_tokens" class="st-chatu8-token-display">当前占用: 0 | 总占用: 0</div>
                 <div id="char_characterTraits-results" class="ch-autocomplete-results"></div>
             </div>
-            <div class="st-chatu8-field-col">
+            <div class="st-chatu8-field-col" data-char-part-field="1">
                 <label for="char_facialFeatures">五官外貌</label>
                 <textarea id="char_facialFeatures" class="st-chatu8-textarea" rows="3"></textarea>
                 <div id="char_facialFeatures_tokens" class="st-chatu8-token-display">当前占用: 0 | 总占用: 0</div>
                 <div id="char_facialFeatures-results" class="ch-autocomplete-results"></div>
             </div>
-            <div class="st-chatu8-field-col">
+            <div class="st-chatu8-field-col" data-char-part-field="1">
                 <label for="char_facialFeaturesBack">五官外貌背面</label>
                 <textarea id="char_facialFeaturesBack" class="st-chatu8-textarea" rows="3"></textarea>
                 <div id="char_facialFeaturesBack_tokens" class="st-chatu8-token-display">当前占用: 0 | 总占用: 0</div>
                 <div id="char_facialFeaturesBack-results" class="ch-autocomplete-results"></div>
             </div>
-            <div class="st-chatu8-field-col">
+            <div class="st-chatu8-field-col" data-char-part-field="1">
                 <label for="char_upperBodySFW">上半身SFW</label>
                 <textarea id="char_upperBodySFW" class="st-chatu8-textarea" rows="3"></textarea>
                 <div id="char_upperBodySFW_tokens" class="st-chatu8-token-display">当前占用: 0 | 总占用: 0</div>
                 <div id="char_upperBodySFW-results" class="ch-autocomplete-results"></div>
             </div>
-            <div class="st-chatu8-field-col">
+            <div class="st-chatu8-field-col" data-char-part-field="1">
                 <label for="char_upperBodySFWBack">上半身SFW背面</label>
                 <textarea id="char_upperBodySFWBack" class="st-chatu8-textarea" rows="3"></textarea>
                 <div id="char_upperBodySFWBack_tokens" class="st-chatu8-token-display">当前占用: 0 | 总占用: 0</div>
                 <div id="char_upperBodySFWBack-results" class="ch-autocomplete-results"></div>
             </div>
-            <div class="st-chatu8-field-col">
+            <div class="st-chatu8-field-col" data-char-part-field="1">
                 <label for="char_fullBodySFW">下半身SFW</label>
                 <textarea id="char_fullBodySFW" class="st-chatu8-textarea" rows="3"></textarea>
                 <div id="char_fullBodySFW_tokens" class="st-chatu8-token-display">当前占用: 0 | 总占用: 0</div>
                 <div id="char_fullBodySFW-results" class="ch-autocomplete-results"></div>
             </div>
-            <div class="st-chatu8-field-col">
+            <div class="st-chatu8-field-col" data-char-part-field="1">
                 <label for="char_fullBodySFWBack">下半身SFW背面</label>
                 <textarea id="char_fullBodySFWBack" class="st-chatu8-textarea" rows="3"></textarea>
                 <div id="char_fullBodySFWBack_tokens" class="st-chatu8-token-display">当前占用: 0 | 总占用: 0</div>
                 <div id="char_fullBodySFWBack-results" class="ch-autocomplete-results"></div>
             </div>
-            <div class="st-chatu8-field-col">
+            <div class="st-chatu8-field-col" data-char-part-field="1">
                 <label for="char_upperBodyNSFW">上半身NSFW</label>
                 <textarea id="char_upperBodyNSFW" class="st-chatu8-textarea" rows="3"></textarea>
                 <div id="char_upperBodyNSFW_tokens" class="st-chatu8-token-display">当前占用: 0 | 总占用: 0</div>
                 <div id="char_upperBodyNSFW-results" class="ch-autocomplete-results"></div>
             </div>
-            <div class="st-chatu8-field-col">
+            <div class="st-chatu8-field-col" data-char-part-field="1">
                 <label for="char_upperBodyNSFWBack">上半身NSFW背面</label>
                 <textarea id="char_upperBodyNSFWBack" class="st-chatu8-textarea" rows="3"></textarea>
                 <div id="char_upperBodyNSFWBack_tokens" class="st-chatu8-token-display">当前占用: 0 | 总占用: 0</div>
                 <div id="char_upperBodyNSFWBack-results" class="ch-autocomplete-results"></div>
             </div>
-            <div class="st-chatu8-field-col">
+            <div class="st-chatu8-field-col" data-char-part-field="1">
                 <label for="char_fullBodyNSFW">下半身NSFW</label>
                 <textarea id="char_fullBodyNSFW" class="st-chatu8-textarea" rows="3"></textarea>
                 <div id="char_fullBodyNSFW_tokens" class="st-chatu8-token-display">当前占用: 0 | 总占用: 0</div>
                 <div id="char_fullBodyNSFW-results" class="ch-autocomplete-results"></div>
             </div>
-            <div class="st-chatu8-field-col">
+            <div class="st-chatu8-field-col" data-char-part-field="1">
                 <label for="char_fullBodyNSFWBack">下半身NSFW背面</label>
                 <textarea id="char_fullBodyNSFWBack" class="st-chatu8-textarea" rows="3"></textarea>
                 <div id="char_fullBodyNSFWBack_tokens" class="st-chatu8-token-display">当前占用: 0 | 总占用: 0</div>
@@ -352,6 +368,22 @@
                 <input type="text" id="outfit_nameEN" class="st-chatu8-text-input" />
             </div>
 
+            <!-- 存储形式：分部位提示词（默认）/ 固定提示词 -->
+            <div class="st-chatu8-field-col">
+                <label for="outfit_promptMode">存储形式</label>
+                <select id="outfit_promptMode" class="st-chatu8-select">
+                    <option value="split" selected>分部位提示词</option>
+                    <option value="fixed">固定提示词</option>
+                </select>
+                <span id="outfit_promptMode_hint" style="opacity: 0.85; font-size: 0.9em;">分部位模式按上半身/下半身分别填写；固定模式只用这一段，不分角度/部位，原样使用。</span>
+            </div>
+            <div class="st-chatu8-field-col">
+                <textarea id="outfit_fixedPrompt" class="st-chatu8-textarea" rows="4" style="display: none;" placeholder="固定提示词：一段通用服装描述，不分角度/部位，原样使用"></textarea>
+                <button type="button" id="outfit_mergeToFixed" class="st-chatu8-btn" style="display: none;">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> 用现有上下半身生成
+                </button>
+            </div>
+
             <!-- 服装全身组合 Token 统计 -->
             <div class="st-chatu8-settings-section" style="background: var(--SmartThemeBlurTintColor); padding: 10px; border-radius: 8px; margin-top: 10px; margin-bottom: 10px;">
                 <label style="font-weight: bold; margin-bottom: 5px; display: block;">服装全身组合 Token 统计 (上半身 + 下半身)</label>
@@ -360,25 +392,25 @@
                     <div id="token_combo_outfit_back">背面全身: 0</div>
                 </div>
             </div>
-            <div class="st-chatu8-field-col">
+            <div class="st-chatu8-field-col" data-outfit-part-field="1">
                 <label for="outfit_upperBody">上半身</label>
                 <textarea id="outfit_upperBody" class="st-chatu8-textarea" rows="4"></textarea>
                 <div id="outfit_upperBody_tokens" class="st-chatu8-token-display">当前占用: 0 | 总占用: 0</div>
                 <div id="outfit_upperBody-results" class="ch-autocomplete-results"></div>
             </div>
-            <div class="st-chatu8-field-col">
+            <div class="st-chatu8-field-col" data-outfit-part-field="1">
                 <label for="outfit_upperBodyBack">上半身背面</label>
                 <textarea id="outfit_upperBodyBack" class="st-chatu8-textarea" rows="4"></textarea>
                 <div id="outfit_upperBodyBack_tokens" class="st-chatu8-token-display">当前占用: 0 | 总占用: 0</div>
                 <div id="outfit_upperBodyBack-results" class="ch-autocomplete-results"></div>
             </div>
-            <div class="st-chatu8-field-col">
+            <div class="st-chatu8-field-col" data-outfit-part-field="1">
                 <label for="outfit_fullBody">下半身服装</label>
                 <textarea id="outfit_fullBody" class="st-chatu8-textarea" rows="4"></textarea>
                 <div id="outfit_fullBody_tokens" class="st-chatu8-token-display">当前占用: 0 | 总占用: 0</div>
                 <div id="outfit_fullBody-results" class="ch-autocomplete-results"></div>
             </div>
-            <div class="st-chatu8-field-col">
+            <div class="st-chatu8-field-col" data-outfit-part-field="1">
                 <label for="outfit_fullBodyBack">下半身背面</label>
                 <textarea id="outfit_fullBodyBack" class="st-chatu8-textarea" rows="4"></textarea>
                 <div id="outfit_fullBodyBack_tokens" class="st-chatu8-token-display">当前占用: 0 | 总占用: 0</div>

@@ -774,3 +774,27 @@
     border: 1px dashed rgba(239, 68, 68, 0.25);
 }
 
+/* 移动端顶部操作栏适配 */
+@media (max-width: 768px) {
+    .va-action-buttons {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .va-action-buttons .st-chatu8-btn,
+    .va-action-buttons .va-btn-primary,
+    .va-action-buttons .va-btn-secondary,
+    .va-action-buttons .va-btn-privacy {
+        flex: 1 1 calc(50% - 6px);
+        min-width: 0;
+        justify-content: center;
+        padding: 6px 8px;
+        font-size: 12px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+}
+

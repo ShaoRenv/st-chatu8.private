@@ -1,0 +1,47 @@
+---
+变量更新规则:
+  rule:
+    - 只输出发生变化的部分；没变化的角色和字段不要出现
+    - 值用英文 tag，逗号分隔；角色名用「角色列表」里已有的键
+    - 人物状态是唯一需要每轮检查的字段；人物形象和服装列表是素材，只在需要新增或修正时出现
+
+  角色列表.<角色名>:
+    人物形象:
+      check:
+        - 优先使用扩展的官方角色预设调用：$<预设名>-<角度>-<状态>-<部位>$
+        - 例：$xiao hong-from front-sfw-upperBody$     头部＋上半身（穿着）
+        - 例：$xiao hong-from behind-nsfw-upperBody$   头部＋上半身（裸）
+        - 注意：不写 upperBody 就不会带出头部预设，所以至少带一个 upperBody
+        - 需要下半身时再追加 -sfw-lowerBody 或 -nsfw-lowerBody
+        - 不需要按部位拆时，直接写 tag（例：1.5::hutao (genshin impact)::,brown hair,red eyes）
+        - 权重写法 1.5::tag:: 用于加强该 tag；只有永久改变才更新
+        - 角色预设里没有的部位就不要写；可用调用见「可用调用」清单
+    可用调用:
+      check:
+        - 由扩展根据该角色的预设自动注入，列出这个角色实际能用的调用串
+        - 只读，不要修改
+    服装列表.<服装名>:
+      check:
+        - 一套服装的完整 tag；只在新增或替换某套服装时出现；已有服装不要重复写
+    人物状态:
+      check:
+        - 当前画面的组装串：引用素材 + 本回合的临时 tag
+        - 写法：$角色列表/<角色名>/服装列表/<服装名>$,$角色列表/<角色名>/人物形象$,<额外 tag>
+        - 也可以直接写官方调用，由扩展展开：$xiao hong-from front-sfw-upperBody$
+        - 减掉 tag：在值里任意位置单独写一段，段首加 -；它对**本值里的所有引用**都生效（与位置无关）
+        - 例：$角色列表/爱莉希雅/服装列表/比基尼$,$角色列表/爱莉希雅/人物形象$,-gold chain,cumdrip,after sex
+        - 状态是驻留的：会一直保留到被改写或随剧情淡化，只在变化时输出，不要每轮重写
+        - 需要清空时写成空字符串
+  调用语法（写在人物形象／人物状态里，由扩展展开；四种粒度）:
+    只有角色特征:            ${"name":"xiao hong","angle":"from front"}$
+    角色特征＋头部:          ${"name":"xiao hong","angle":"from front","upperBody":"facial"}$
+    特征＋头部＋上半身(穿):    ${"name":"xiao hong","angle":"from front","upperBody":"sfw"}$
+    再加下半身(穿):          ${"name":"xiao hong","angle":"from front","upperBody":"sfw","lowerBody":"sfw"}$
+    裸:                      upperBody/lowerBody 写 nsfw
+    背面:                    angle 里写 from behind，会取面部/身体的背面字段
+    旧格式（无"只有头部"）:  $xiao hong-from front-sfw-upperBody$
+    rule:
+      - 必须带 angle，否则会被当成服装调用
+      - 不写 upperBody = 只有角色特征，不会带出头部
+      - upperBody 写 facial（或任何非 sfw/nsfw/hidden 的值）＝ 只加头部，不加上半身
+      - lowerBody 的 sfw/nsfw 取的是全身字段（fullBodySFW / fullBodyNSFW）

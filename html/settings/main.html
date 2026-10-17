@@ -105,6 +105,31 @@
                 <span class="st-chatu8-slider"></span>
             </div>
         </div>
+        <div class="st-chatu8-field">
+            <label for="varsEnabled">变量系统（tag 存储）</label>
+            <div class="st-chatu8-toggle">
+                <input id="varsEnabled" type="checkbox" />
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="varsFloorMode">变量楼层</label>
+            <select id="varsFloorMode" class="st-chatu8-select">
+                <option value="follow">跟随当前楼层（读上一楼 · 写当前楼层）</option>
+                <option value="latest">始终最新层（读最新层 · 写最新层）</option>
+            </select>
+        </div>
+        <div class="st-chatu8-field">
+            <label>最新层操作</label>
+            <div class="st-chatu8-vars-floor-actions">
+                <button id="vars-read-latest" type="button" class="menu_button" title="立即读取最新一层的变量">📥 读取最新层</button>
+                <button id="vars-write-latest" type="button" class="menu_button" title="把当前变量状态写入最新一层">📤 更新到最新层</button>
+            </div>
+        </div>
+        <div class="st-chatu8-field">
+            <label>楼层状态</label>
+            <small id="vars-floor-status" class="st-chatu8-vars-floor-status">—</small>
+        </div>
     </div>
 
     <!-- 3. 图片交互与显示 -->
@@ -207,6 +232,38 @@
             <div class="st-chatu8-toggle">
                 <input id="convertToJpegStorage" type="checkbox" />
                 <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="compressBoostStorage">压缩加强（生图时自动压缩，比转JPEG更小）</label>
+            <div class="st-chatu8-toggle">
+                <input id="compressBoostStorage" type="checkbox" />
+                <span class="st-chatu8-slider"></span>
+            </div>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="compressBoostLevel">压缩加强强度</label>
+            <select id="compressBoostLevel" class="st-chatu8-select">
+                <option value="lossless">无损优先（只做无损重压缩，画质最高、体积最大）</option>
+                <option value="balanced">均衡（默认，推荐）</option>
+                <option value="max">极限（最省空间，画质损失更明显）</option>
+            </select>
+        </div>
+        <div class="st-chatu8-field">
+            <label for="compressBoostConcurrency">压缩并发</label>
+            <select id="compressBoostConcurrency" class="st-chatu8-select">
+                <option value="auto">自动（推荐：手机 2 路 / 桌面最多 4 路）</option>
+                <option value="1">1 路（最省电、最省内存）</option>
+                <option value="2">2 路</option>
+                <option value="3">3 路</option>
+                <option value="4">4 路</option>
+            </select>
+        </div>
+        <div class="st-chatu8-field">
+            <label>压缩加强</label>
+            <div>
+                <button id="image-cache-compress-main" class="st-chatu8-btn"><i class="fa-solid fa-compress"></i> 立即压缩已有缓存</button>
+                <span style="font-size:12px;opacity:.7;margin-left:8px;">对已缓存的图片执行一次压缩加强（视频与酒馆服务器图片自动跳过）</span>
             </div>
         </div>
         <div class="st-chatu8-field">

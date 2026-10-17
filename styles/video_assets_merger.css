@@ -126,6 +126,27 @@
     outline: none;
 }
 
+/* 图片合成画板专属深色下拉框与选项隔离，阻断全局浅色主题穿透 */
+#st-chatu8-settings #va-merger-modal select,
+.va-merger-container select {
+    background: #141724;
+    color: #e2e8f0;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+#st-chatu8-settings #va-merger-modal select option,
+.va-merger-container select option {
+    background-color: #161822 !important;
+    color: #e2e8f0 !important;
+    padding: 0 !important;
+}
+
+#st-chatu8-settings #va-merger-modal select option:checked,
+.va-merger-container select option:checked {
+    background-color: #8b5cf6 !important;
+    color: #ffffff !important;
+}
+
 /* 顶部右上角关闭按钮 */
 .va-merger-header #va-merger-btn-close {
     width: 30px;
@@ -656,13 +677,15 @@
    移动端响应式布局优化 (max-width: 768px)
    ========================================================================== */
 @media (max-width: 768px) {
+    .va-merger-backdrop {
+        padding: 0;
+    }
+
     .va-merger-container {
-        width: 100vw;
-        height: 100vh;
-        max-width: none;
-        max-height: none;
-        border-radius: 0;
-        border: none;
+        width: 95vw;
+        max-width: 95vw;
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
     }
 
     .va-merger-header {

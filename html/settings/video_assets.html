@@ -437,7 +437,7 @@
                 </div>
 
                 <!-- 左侧/中间：播放器与逐帧控制台 -->
-                <div class="va-extractor-player-pane">
+                <div class="va-extractor-player-pane" id="va-extractor-player-pane">
                     <!-- 监视器视口 -->
                     <div class="va-extractor-viewport" id="va-extractor-viewport">
                         <video id="va-extractor-video" playsinline preload="auto"></video>
@@ -472,24 +472,24 @@
                         <!-- 按钮操作行 -->
                         <div class="va-extractor-toolbar">
                             <!-- 播放与逐帧步进控制组 -->
-                            <div class="va-extractor-ctrl-group">
+                            <div class="va-extractor-ctrl-group va-extractor-step-group">
                                 <button type="button" class="va-extractor-btn-ctrl" id="va-extractor-btn-first" title="跳至视频首帧 (Home)">
                                     <i class="fa-solid fa-backward-step"></i>
                                 </button>
                                 <button type="button" class="va-extractor-btn-ctrl" id="va-extractor-btn-prev-10" title="后退 10 帧 (Shift+←)">
-                                    <i class="fa-solid fa-angles-left"></i> -10帧
+                                    <i class="fa-solid fa-angles-left"></i> <span class="va-btn-text">-10帧</span>
                                 </button>
                                 <button type="button" class="va-extractor-btn-ctrl" id="va-extractor-btn-prev-1" title="后退 1 帧 (← 键盘左键)">
-                                    <i class="fa-solid fa-angle-left"></i> -1帧
+                                    <i class="fa-solid fa-angle-left"></i> <span class="va-btn-text">-1帧</span>
                                 </button>
                                 <button type="button" class="va-extractor-btn-ctrl primary" id="va-extractor-btn-play" title="播放 / 暂停 (空格键 Space)">
                                     <i class="fa-solid fa-play"></i>
                                 </button>
                                 <button type="button" class="va-extractor-btn-ctrl" id="va-extractor-btn-next-1" title="前进 1 帧 (→ 键盘右键)">
-                                    +1帧 <i class="fa-solid fa-angle-right"></i>
+                                    <span class="va-btn-text">+1帧</span> <i class="fa-solid fa-angle-right"></i>
                                 </button>
                                 <button type="button" class="va-extractor-btn-ctrl" id="va-extractor-btn-next-10" title="前进 10 帧 (Shift+→)">
-                                    +10帧 <i class="fa-solid fa-angles-right"></i>
+                                    <span class="va-btn-text">+10帧</span> <i class="fa-solid fa-angles-right"></i>
                                 </button>
                                 <button type="button" class="va-extractor-btn-ctrl" id="va-extractor-btn-last" title="跳至视频尾帧 (End)">
                                     <i class="fa-solid fa-forward-step"></i>
@@ -497,7 +497,7 @@
                             </div>
 
                             <!-- 帧率与定位跳转组 -->
-                            <div class="va-extractor-ctrl-group">
+                            <div class="va-extractor-ctrl-group va-extractor-opt-group">
                                 <div class="va-extractor-fps-wrap">
                                     <label title="设置基准帧率以精准折算帧数"><i class="fa-solid fa-gauge-high"></i> 帧率:</label>
                                     <select id="va-extractor-fps-select" class="st-chatu8-select" style="padding: 2px 6px; font-size: 12px; height: 30px;">
@@ -507,14 +507,14 @@
                                         <option value="60">60 FPS (高帧率)</option>
                                     </select>
                                 </div>
-                                <div class="va-extractor-fps-wrap" style="margin-left: 6px;">
+                                <div class="va-extractor-fps-wrap va-extractor-jump-wrap">
                                     <label>跳帧:</label>
-                                    <input type="number" id="va-extractor-jump-frame" class="va-extractor-num-input" placeholder="帧号" min="0" step="1" title="输入指定帧序号按回车直接定位">
+                                    <input type="number" id="va-extractor-jump-frame" class="va-extractor-num-input" placeholder="帧号" min="0" step="1" inputmode="numeric" title="输入指定帧序号按回车直接定位">
                                 </div>
                             </div>
 
                             <!-- 核心：捕捉当前帧按钮 -->
-                            <div class="va-extractor-ctrl-group">
+                            <div class="va-extractor-ctrl-group va-extractor-capture-group">
                                 <button type="button" class="va-extractor-btn-capture" id="va-extractor-btn-capture" title="截取当前帧画面 (快捷键 C 或 Enter)">
                                     <i class="fa-solid fa-camera"></i> 捕捉当前帧
                                 </button>
@@ -524,7 +524,7 @@
                 </div>
 
                 <!-- 右侧：截帧成果与快速录入资产面板 -->
-                <div class="va-extractor-result-pane">
+                <div class="va-extractor-result-pane" id="va-extractor-result-pane">
                     <div class="va-extractor-result-title">
                         <i class="fa-solid fa-circle-check"></i>
                         <span>截帧成果与导出</span>
